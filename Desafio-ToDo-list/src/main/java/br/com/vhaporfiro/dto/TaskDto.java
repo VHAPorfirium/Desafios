@@ -16,7 +16,7 @@ public class TaskDto {
     @Size(max = 1000, message = "O campo descrição deve conter no maximo 1000 caracteres.")
     private String description;
 
-    @NotBlank(message = "O campo status é obrigatorio")
+    //@NotBlank(message = "O campo status é obrigatorio")
     private String status;
 
     private LocalDateTime createdAt;

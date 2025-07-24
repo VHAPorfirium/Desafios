@@ -3,7 +3,6 @@ package br.com.vhaporfiro.entities;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import static br.com.vhaporfiro.entities.Task_Status.AGUARDANDO;
@@ -28,11 +27,11 @@ public class Task implements Serializable {
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
-    private LocalDate dueDate;
+    private LocalDateTime dueDate;
 
     public Task() {}
 
-    public Task(String title, String description, LocalDate dueDate) {
+    public Task(String title, String description, LocalDateTime dueDate) {
         this.title = title;
         this.description = description;
         this.dueDate = dueDate;
@@ -80,11 +79,11 @@ public class Task implements Serializable {
         this.createdAt = createdAt;
     }
 
-    public LocalDate getDueDate() {
+    public LocalDateTime getDueDate() {
         return dueDate;
     }
 
-    public void setDueDate(LocalDate dueDate) {
+    public void setDueDate(LocalDateTime dueDate) {
         this.dueDate = dueDate;
     }
 }
