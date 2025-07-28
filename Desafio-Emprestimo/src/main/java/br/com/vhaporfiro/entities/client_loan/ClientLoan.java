@@ -15,7 +15,7 @@ public class ClientLoan {
     private Long Id;
 
     @ManyToOne
-    @Column(name = "client_id")
+    @JoinColumn(name = "client_id", nullable = false)
     private Client client;
 
     @ManyToOne

@@ -13,7 +13,7 @@ public class LoanType {
     private Long Id;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private LoanTypeEnum loanTypeEnum;
 
     @Column(nullable = false, precision = 5, scale = 2)

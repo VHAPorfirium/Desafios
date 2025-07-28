@@ -12,7 +12,7 @@ public class Client {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
 
-    @Column(nullable = false, length = 14)
+    @Column(nullable = false, length = 14, unique = true)
     private String cpf;
 
     @Column(nullable = false, length = 100)
@@ -21,7 +21,7 @@ public class Client {
     @Column(nullable = false)
     private Integer age;
 
-    @Column(nullable = false, precision = 15, scale = 4)
+    @Column(nullable = false, precision = 15, scale = 2)
     private BigDecimal income;
 
     @Enumerated(EnumType.STRING)
