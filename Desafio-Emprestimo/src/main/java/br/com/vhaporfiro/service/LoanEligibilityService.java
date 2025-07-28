@@ -41,7 +41,7 @@ public class LoanEligibilityService {
         if (clientDTO.getIncome().compareTo(BigDecimal.valueOf(3000.00)) > 0 &&
                 clientDTO.getIncome().compareTo(BigDecimal.valueOf(5000.00)) <= 0 &&
                 clientDTO.getAge() < 30 &&
-                clientDTO.getStateCodeEnum() == StateCodeEnum.SP) {
+                clientDTO.getLocation() == StateCodeEnum.SP) {
             if (!eligibleLoans.stream().anyMatch(loan -> loan.getType() == LoanTypeEnum.PERSONAL)) {
                 eligibleLoans.add(new LoanDetailsDTO(LoanTypeEnum.PERSONAL, personalInterestRate));
             }
@@ -58,7 +58,7 @@ public class LoanEligibilityService {
         if (clientDTO.getIncome().compareTo(BigDecimal.valueOf(3000.00)) > 0 &&
                 clientDTO.getIncome().compareTo(BigDecimal.valueOf(5000.00)) <= 0 &&
                 clientDTO.getAge() < 30 &&
-                clientDTO.getStateCodeEnum() == StateCodeEnum.SP) {
+                clientDTO.getLocation() == StateCodeEnum.SP) {
             if (!eligibleLoans.stream().anyMatch(loan -> loan.getType() == LoanTypeEnum.GUARANTEED)) {
                 eligibleLoans.add(new LoanDetailsDTO(LoanTypeEnum.GUARANTEED, guaranteedInterestRate));
             }

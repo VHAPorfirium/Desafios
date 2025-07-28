@@ -3,6 +3,8 @@ package br.com.vhaporfiro.entities.loan;
 import java.math.BigDecimal;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
 
 @Entity
 @Table(name = "loan_type")
@@ -10,10 +12,10 @@ public class LoanType {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Id;
+    private Long id;
 
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, unique = true)
+    @JdbcTypeCode(SqlTypes.NAMED_ENUM)
+    @Column(name = "type", nullable = false, unique = true)
     private LoanTypeEnum loanTypeEnum;
 
     @Column(nullable = false, precision = 5, scale = 2)
@@ -27,11 +29,11 @@ public class LoanType {
     }
 
     public Long getId() {
-        return Id;
+        return id;
     }
 
     public void setId(Long id) {
-        Id = id;
+        this.id = id;
     }
 
     public LoanTypeEnum getLoanTypeEnum() {

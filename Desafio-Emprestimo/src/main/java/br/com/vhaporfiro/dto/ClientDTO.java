@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 public class ClientDTO {
 
-    @NotNull(message = "A idade é obrigatorio.")
+    @NotNull(message = "A idade é obrigatoria.")
     @Min(value = 0, message = "A idade não pode ser negativa.")
     @Max(value = 120, message = "A idade máxima é 120 anos.")
     private Integer age;
@@ -16,7 +16,7 @@ public class ClientDTO {
     @Pattern(regexp = "^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$", message = "CPF inválido. Use o formato 000.000.000-00")
     private String cpf;
 
-    @NotNull(message = "O nome é obrigatorio.")
+    @NotBlank(message = "O nome é obrigatorio.")
     @Size(min = 3, max = 100, message = "Nome deve ter entre 3 e 100 caracteres")
     private String name;
 
@@ -25,18 +25,19 @@ public class ClientDTO {
     @Digits(integer = 15, fraction = 4, message = "Renda com formato inválido (máx. 15 dígitos inteiros, 4 decimais)")
     private BigDecimal income;
 
+    // --- CORREÇÃO AQUI: Renomear o campo para 'location' para bater com o JSON ---
     @NotNull(message = "O código de área é obrigatorio.")
-    @Size(min = 2, max = 2, message = "Localização deve ter 2 caracteres (UF)")
-    private StateCodeEnum location;
+    private StateCodeEnum location; // Renomeado de 'stateCodeEnum' para 'location'
 
     public ClientDTO(){}
 
+    // --- CORREÇÃO AQUI: Ajustar o construtor ---
     public ClientDTO(Integer age, String cpf, String name, BigDecimal income, StateCodeEnum location) {
         this.age = age;
         this.cpf = cpf;
         this.name = name;
         this.income = income;
-        this.location = location;
+        this.location = location; // Agora refere-se ao campo 'location'
     }
 
     public Integer getAge() {
@@ -71,11 +72,12 @@ public class ClientDTO {
         this.income = income;
     }
 
-    public StateCodeEnum getStateCodeEnum() {
+    // --- CORREÇÃO AQUI: Ajustar getters e setters ---
+    public StateCodeEnum getLocation() { // Renomeado de 'getStateCodeEnum' para 'getLocation'
         return location;
     }
 
-    public void setStateCodeEnum(StateCodeEnum location) {
+    public void setLocation(StateCodeEnum location) { // Renomeado de 'setStateCodeEnum' para 'setLocation'
         this.location = location;
     }
 
@@ -86,7 +88,7 @@ public class ClientDTO {
                 ", cpf='" + cpf + '\'' +
                 ", name='" + name + '\'' +
                 ", income=" + income +
-                ", stateCodeEnum=" + location +
+                ", location=" + location + // Agora refere-se ao campo 'location'
                 '}';
     }
 }
