@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 
 public class ClientDTO {
 
-    @NotNull(message = "A idade é obrigatorio.")
+    @NotNull(message = "A idade é obrigatoria.")
     @Min(value = 0, message = "A idade não pode ser negativa.")
     @Max(value = 120, message = "A idade máxima é 120 anos.")
     private Integer age;
@@ -16,7 +16,7 @@ public class ClientDTO {
     @Pattern(regexp = "^\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}$", message = "CPF inválido. Use o formato 000.000.000-00")
     private String cpf;
 
-    @NotNull(message = "O nome é obrigatorio.")
+    @NotBlank(message = "O nome é obrigatorio.")
     @Size(min = 3, max = 100, message = "Nome deve ter entre 3 e 100 caracteres")
     private String name;
 
@@ -26,7 +26,6 @@ public class ClientDTO {
     private BigDecimal income;
 
     @NotNull(message = "O código de área é obrigatorio.")
-    @Size(min = 2, max = 2, message = "Localização deve ter 2 caracteres (UF)")
     private StateCodeEnum location;
 
     public ClientDTO(){}
@@ -71,11 +70,11 @@ public class ClientDTO {
         this.income = income;
     }
 
-    public StateCodeEnum getStateCodeEnum() {
+    public StateCodeEnum getLocation() {
         return location;
     }
 
-    public void setStateCodeEnum(StateCodeEnum location) {
+    public void setLocation(StateCodeEnum location) {
         this.location = location;
     }
 
@@ -86,7 +85,7 @@ public class ClientDTO {
                 ", cpf='" + cpf + '\'' +
                 ", name='" + name + '\'' +
                 ", income=" + income +
-                ", stateCodeEnum=" + location +
+                ", location=" + location +
                 '}';
     }
 }
